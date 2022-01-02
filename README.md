@@ -9,6 +9,13 @@ This is a .NET wrapper for the [Snapcast](https://github.com/badaix/snapcast) RP
  - netstandard2.0
  - net6.0
 
+## Install
+
+### NuGet
+```
+Install-Package justr.snapcast-api
+```
+
 ## Usage
 
 ### Init
