@@ -41,8 +41,8 @@ class NotificationConverter : JsonConverter<Notification>
         string getNotificationType() =>
             doc.RootElement.EnumerateObject().ElementAtOrDefault(1).Value.ToString();
 
-        TNotification deserialize<TNotification>() where TNotification : IParams =>
-            JsonSerializer.Deserialize<TNotification>(doc.RootElement.GetProperty("params"));
+        TParams deserialize<TParams>() where TParams : IParams =>
+            JsonSerializer.Deserialize<TParams>(doc.RootElement.GetProperty("params"));
     }
 
     public override void Write(Utf8JsonWriter writer, Notification value, JsonSerializerOptions options) { }
