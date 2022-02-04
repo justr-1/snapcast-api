@@ -1,5 +1,5 @@
 ﻿using justr.SnapcastApi.Exceptions;
-using justr.SnapcastApi.Models.Request.Client;
+using justr.SnapcastApi.Models.Request.Clients;
 using justr.SnapcastApi.Models.Response.Results;
 using System;
 using System.Threading.Tasks;

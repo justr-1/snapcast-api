@@ -1,4 +1,4 @@
-﻿using justr.SnapcastApi.Models.Response.Misc;
+﻿using justr.SnapcastApi.Models.Misc;
 using System.Text.Json.Serialization;
 
 namespace justr.SnapcastApi.Models.Response.Results;

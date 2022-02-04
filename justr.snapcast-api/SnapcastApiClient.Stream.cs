@@ -1,4 +1,4 @@
-﻿using justr.SnapcastApi.Models.Request.Stream;
+﻿using justr.SnapcastApi.Models.Request.Streams;
 using justr.SnapcastApi.Models.Response.Results;
 using System.Threading.Tasks;
 

@@ -41,7 +41,7 @@ public partial class SnapcastApiClient
 
         responseMessage.EnsureSuccessStatusCode();
 
-        var response = Deserialize(responseBody);
+        var response = Deserialize<RpcResponse>(responseBody);
         AssertValidResult(request, response);
         return (TResult)response.Result!;
     }

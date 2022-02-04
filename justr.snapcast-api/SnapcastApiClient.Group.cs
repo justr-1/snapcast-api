@@ -1,4 +1,4 @@
-﻿using justr.SnapcastApi.Models.Request.Group;
+﻿using justr.SnapcastApi.Models.Request.Groups;
 using justr.SnapcastApi.Models.Response.Results;
 using System.Collections.Generic;
 using System.Linq;
