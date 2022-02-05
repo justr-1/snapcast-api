@@ -1,5 +1,6 @@
 
 
+
 # .NET Snapcast API Wrapper
 
 This is a .NET wrapper for the [Snapcast](https://github.com/badaix/snapcast) RPC API.
@@ -84,7 +85,16 @@ __Stream__
 api.StreamAddStream(streamUri); // pipe:///tmp/snapfifo?name=stream1
 api.StreamRemoveStream(streamId);
 ```
+### Notifications
+```csharp
+api.OnNotification += OnNotification;
+await api.StartNotificationListener();
 
+static void OnNotification(object? sender, IParams @params)
+{
+    Console.WriteLine(@params.GetType());
+}
+```
 ### Exceptions
 
  The `SnapcastApiException` will be thrown if anything goes wrong.
@@ -93,7 +103,7 @@ api.StreamRemoveStream(streamId);
 
  - [x] API access using http protocol 
  - [x] Support Snapcast 0.25 API requests and responses
- - [ ] Support notifications
+ - [x] Support notifications
  - [ ] Support new Snapcast 0.26 API features (metadata and control api for audio streams)  
  - [ ] (API access using tcp socket)
 

@@ -5,20 +5,22 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
-using static justr.SnapcastApi.Json.Serializer;
 using justr.SnapcastApi.Models.Notifcations;
+using justr.SnapcastApi.Models.Notifications.Streams;
+using static justr.SnapcastApi.Json.Serializer;
 
 namespace justr.SnapcastApi;
 public partial class SnapcastApiClient
 {
-    public event EventHandler<IParams> OnNotification; // event
-    public async Task StartNotificationListener()
+    public event EventHandler<IParams> OnNotification;
+
+    public async Task StartNotificationListener(bool reconnectOnError = true)
     {
         try
         {
-            var ws = new ClientWebSocket();
+           using var ws = new ClientWebSocket();
             var cts = new CancellationTokenSource();
-            await ws.ConnectAsync(new Uri($"ws://{_host}:{_port}/jsonrpc"), cts.Token);
+            await(ws.ConnectAsync(new Uri($"ws://{_host}:{_port}/jsonrpc"), cts.Token));
             _logger.LogInformation($"Websocket connection: {ws.State}");
 
             while (ws.State == WebSocketState.Open)
@@ -47,8 +49,13 @@ public partial class SnapcastApiClient
         catch (Exception e)
         {
             _logger.LogError($"Websocket error: {e}");
-            Thread.Sleep(1000);
-            await StartNotificationListener();
+            OnNotification?.Invoke(this, new OnError { Error = new() { Message = e.Message, Data = e.StackTrace } });
+
+            if (reconnectOnError)
+            {
+                Thread.Sleep(1000);
+                await StartNotificationListener();
+            }
         }
 
     }

@@ -6,8 +6,8 @@
 
 		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
 
-		<Version>0.1.0</Version>
-		<PackageVersion>0.1.0</PackageVersion>
+		<Version>0.2.0</Version>
+		<PackageVersion>0.2.0</PackageVersion>
 
 		<Authors>justr</Authors>
 		<PackageProjectUrl>https://github.com/justr-1/snapcast-api</PackageProjectUrl>
